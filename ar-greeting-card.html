@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Greeting Card</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/aframevr/ar.js@1.4.0/dist/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aframe-animation-component@6.1.1/dist/aframe-animation-component.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+        
+        .instructions {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            text-align: center;
+            max-width: 90%;
+        }
+        
+        .instructions h2 {
+            margin: 0 0 10px 0;
+            color: #333;
+            font-size: 18px;
+        }
+        
+        .instructions p {
+            margin: 5px 0;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .marker-info {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h2>🎉 AR Greeting Card</h2>
+        <p>Point your camera at the AR marker below</p>
+        <p>Watch the magical greeting unfold!</p>
+    </div>
+    
+    <div class="loading" id="loading">
+        Loading AR Experience...
+    </div>
+    
+    <div class="marker-info">
+        Print this marker and place it on a flat surface
+    </div>
+
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        
+        <!-- AR Marker -->
+        <a-marker type="pattern" url="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iYmxhY2siLz4KICA8cmVjdCB4PSI1MCIgeT0iNTAiIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIiBmaWxsPSJ3aGl0ZSIvPgogIDxyZWN0IHg9Ijc1IiB5PSI3NSIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K">
+            
+            <!-- 3D Greeting Card Base -->
+            <a-box position="0 0 0" width="2" height="1.5" depth="0.1" 
+                   color="#FF6B6B" 
+                   animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+            </a-box>
+            
+            <!-- Card Front - Heart -->
+            <a-plane position="0 0.2 0.06" width="1.5" height="1" 
+                     color="#FFB6C1" 
+                     animation="property: scale; to: 1.1 1.1 1; loop: true; dir: alternate; dur: 2000">
+            </a-plane>
+            
+            <!-- Floating Hearts -->
+            <a-sphere position="-0.8 1.5 0" radius="0.1" color="#FF69B4"
+                      animation="property: position; to: -0.8 2.5 0; loop: true; dir: alternate; dur: 3000">
+            </a-sphere>
+            
+            <a-sphere position="0.8 1.2 0" radius="0.08" color="#FF1493"
+                      animation="property: position; to: 0.8 2.2 0; loop: true; dir: alternate; dur: 2500">
+            </a-sphere>
+            
+            <a-sphere position="0 1.8 0" radius="0.12" color="#FFB6C1"
+                      animation="property: position; to: 0 2.8 0; loop: true; dir: alternate; dur: 3500">
+            </a-sphere>
+            
+            <!-- Celebration Particles -->
+            <a-sphere position="-1 0.5 0" radius="0.05" color="#FFD700"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 2000">
+            </a-sphere>
+            
+            <a-sphere position="1 0.5 0" radius="0.05" color="#FFD700"
+                      animation="property: rotation; to: 0 -360 0; loop: true; dur: 2000">
+            </a-sphere>
+            
+            <a-sphere position="0 0.8 0" radius="0.05" color="#FFD700"
+                      animation="property: rotation; to: 360 0 0; loop: true; dur: 1500">
+            </a-sphere>
+            
+            <!-- Interactive Message -->
+            <a-text value="Happy Birthday!" 
+                    position="0 -0.3 0.06" 
+                    align="center" 
+                    color="#FFFFFF" 
+                    font="kelsonsans"
+                    animation="property: color; to: #FFD700; loop: true; dir: alternate; dur: 2000">
+            </a-text>
+            
+            <!-- 3D Cake Model -->
+            <a-cylinder position="0.5 0.3 0" radius="0.2" height="0.3" 
+                       color="#8B4513" 
+                       animation="property: rotation; to: 0 360 0; loop: true; dur: 8000">
+            </a-cylinder>
+            
+            <!-- Cake Top -->
+            <a-cylinder position="0.5 0.5 0" radius="0.15" height="0.1" 
+                       color="#FFB6C1" 
+                       animation="property: rotation; to: 0 -360 0; loop: true; dur: 6000">
+            </a-cylinder>
+            
+            <!-- Cake Candle -->
+            <a-cylinder position="0.5 0.6 0" radius="0.02" height="0.1" 
+                       color="#FFD700">
+            </a-cylinder>
+            
+            <!-- Flame -->
+            <a-sphere position="0.5 0.7 0" radius="0.03" color="#FF4500"
+                      animation="property: scale; to: 1.2 1.2 1; loop: true; dir: alternate; dur: 1000">
+            </a-sphere>
+            
+            <!-- Balloons -->
+            <a-sphere position="-0.5 1 0" radius="0.15" color="#FF0000"
+                      animation="property: position; to: -0.5 1.5 0; loop: true; dir: alternate; dur: 2000">
+            </a-sphere>
+            
+            <a-sphere position="0.2 1.2 0" radius="0.12" color="#00FF00"
+                      animation="property: position; to: 0.2 1.7 0; loop: true; dir: alternate; dur: 2200">
+            </a-sphere>
+            
+            <a-sphere position="-0.2 0.9 0" radius="0.13" color="#0000FF"
+                      animation="property: position; to: -0.2 1.4 0; loop: true; dir: alternate; dur: 1800">
+            </a-sphere>
+            
+            <!-- Gift Box -->
+            <a-box position="-0.5 0.2 0" width="0.3" height="0.3" depth="0.3" 
+                   color="#32CD32" 
+                   animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
+            </a-box>
+            
+            <!-- Gift Ribbon -->
+            <a-box position="-0.5 0.2 0" width="0.3" height="0.05" depth="0.3" 
+                   color="#FF0000" 
+                   animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
+            </a-box>
+            
+            <a-box position="-0.5 0.2 0" width="0.05" height="0.3" depth="0.3" 
+                   color="#FF0000" 
+                   animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
+            </a-box>
+            
+            <!-- Confetti -->
+            <a-plane position="-0.3 0.1 0" width="0.1" height="0.1" 
+                     color="#FFD700" 
+                     rotation="45 0 0"
+                     animation="property: rotation; to: 45 360 0; loop: true; dur: 3000">
+            </a-plane>
+            
+            <a-plane position="0.3 0.1 0" width="0.1" height="0.1" 
+                     color="#FF69B4" 
+                     rotation="-45 0 0"
+                     animation="property: rotation; to: -45 360 0; loop: true; dur: 3000">
+            </a-plane>
+            
+            <!-- Click Interaction -->
+            <a-box position="0 -0.6 0" width="0.8" height="0.2" depth="0.05" 
+                   color="#4CAF50" 
+                   animation="property: color; to: #45a049; loop: true; dir: alternate; dur: 2000">
+                <a-text value="Click Me!" 
+                        position="0 0 0.03" 
+                        align="center" 
+                        color="#FFFFFF" 
+                        font="kelsonsans">
+                </a-text>
+            </a-box>
+            
+        </a-marker>
+        
+        <!-- Camera -->
+        <a-entity camera></a-entity>
+        
+    </a-scene>
+    
+    <script>
+        // Hide loading screen when AR is ready
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+            }, 2000);
+        });
+        
+        // Add click interaction
+        document.addEventListener('click', function() {
+            // Create explosion effect
+            for(let i = 0; i < 20; i++) {
+                const confetti = document.createElement('a-sphere');
+                confetti.setAttribute('position', `${(Math.random() - 0.5) * 2} ${Math.random() * 2} ${Math.random() * 0.5}`);
+                confetti.setAttribute('radius', '0.02');
+                confetti.setAttribute('color', `hsl(${Math.random() * 360}, 100%, 50%)`);
+                confetti.setAttribute('animation', `property: position; to: ${(Math.random() - 0.5) * 4} ${Math.random() * 4} ${Math.random() * 2}; dur: 2000`);
+                
+                const marker = document.querySelector('a-marker');
+                marker.appendChild(confetti);
+                
+                // Remove confetti after animation
+                setTimeout(() => {
+                    marker.removeChild(confetti);
+                }, 2000);
+            }
+        });
+        
+        // Add sound effect (if supported)
+        function playSound() {
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBS13yO/eizEIHWq+8+OWT');
+            audio.play().catch(e => console.log('Audio not supported'));
+        }
+        
+        // Play sound on click
+        document.addEventListener('click', playSound);
+    </script>
+</body>
+</html>

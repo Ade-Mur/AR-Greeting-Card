@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Greeting Card - Direct Access</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+        
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        
+        .instructions h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        
+        .instructions ol {
+            color: #6c757d;
+            line-height: 1.6;
+        }
+        
+        .instructions li {
+            margin: 10px 0;
+        }
+        
+        .button {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            margin: 10px;
+            transition: background 0.3s;
+        }
+        
+        .button:hover {
+            background: #0056b3;
+        }
+        
+        .button.secondary {
+            background: #28a745;
+        }
+        
+        .button.secondary:hover {
+            background: #1e7e34;
+        }
+        
+        .warning {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .file-links {
+            margin: 20px 0;
+        }
+        
+        .file-links a {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #495057;
+            transition: background 0.3s;
+        }
+        
+        .file-links a:hover {
+            background: #dee2e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 AR Greeting Card</h1>
+        
+        <div class="success">
+            <strong>✅ Files Created Successfully!</strong><br>
+            Your AR greeting card files are ready to use.
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 How to Use Your AR Greeting Card:</h3>
+            <ol>
+                <li><strong>Print the AR Marker:</strong> Open the marker file below and print it on white paper</li>
+                <li><strong>Cut out the marker:</strong> Cut along the border of the printed marker</li>
+                <li><strong>Open the AR Card:</strong> Open the greeting card file on your mobile device</li>
+                <li><strong>Allow camera access:</strong> Grant camera permissions when prompted</li>
+                <li><strong>Point camera at marker:</strong> Aim your camera at the printed marker</li>
+                <li><strong>Enjoy the AR magic!</strong> Watch the 3D greeting unfold</li>
+            </ol>
+        </div>
+        
+        <div class="warning">
+            <strong>⚠️ Important Notes:</strong><br>
+            • Use a mobile device (phone/tablet) for best AR experience<br>
+            • Ensure good lighting when using the marker<br>
+            • Keep the marker flat and stable<br>
+            • Chrome browser works best for AR functionality
+        </div>
+        
+        <div class="file-links">
+            <h3>📁 Your AR Files:</h3>
+            <a href="ar-marker.html" target="_blank">🖨️ AR Marker (Print This)</a>
+            <a href="ar-greeting-card.html" target="_blank">🎊 AR Greeting Card (Main Experience)</a>
+            <a href="README.md" target="_blank">📖 Documentation</a>
+            <a href="HOW_TO_RUN.md" target="_blank">🚀 Setup Guide</a>
+        </div>
+        
+        <div class="instructions">
+            <h3>🔧 Alternative Setup (If files don't open directly):</h3>
+            <ol>
+                <li><strong>Start a local server:</strong> Open Command Prompt in this folder</li>
+                <li><strong>Run:</strong> <code>python -m http.server 8000</code></li>
+                <li><strong>Access via:</strong> <code>http://localhost:8000/ar-greeting-card.html</code></li>
+            </ol>
+        </div>
+        
+        <div style="margin-top: 30px;">
+            <a href="ar-marker.html" class="button">🖨️ Print Marker</a>
+            <a href="ar-greeting-card.html" class="button secondary">🎊 Open AR Card</a>
+        </div>
+        
+        <div style="margin-top: 20px; font-size: 14px; color: #6c757d;">
+            <p>Created with ❤️ using AR.js and A-Frame</p>
+        </div>
+    </div>
+</body>
+</html>
